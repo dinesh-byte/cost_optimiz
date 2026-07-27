@@ -1,0 +1,65 @@
+{
+  "vm_families": [
+    {
+      "category": "General Purpose",
+      "description": "Balanced CPU-to-memory ratio. Ideal for testing, development, small-to-medium databases, and low-to-medium traffic web servers.",
+      "series_list": [
+        { "series": "B-Series", "skus": ["B1ls", "B1s", "B2s", "B2ms", "B4ms", "B8ms", "B12ms", "B16ms", "B20ms"], "features": "Burstable performance" },
+        { "series": "D-Series v5", "skus": ["D2v5", "D4v5", "D8v5", "D16v5", "D32v5", "D48v5", "D64v5"], "features": "Intel Xeon Ice Lake, without local temp disk" },
+        { "series": "Dds-Series v5", "skus": ["D2ds_v5", "D4ds_v5", "D8ds_v5", "D16ds_v5", "D32ds_v5", "D48ds_v5", "D64ds_v5"], "features": "Intel Xeon Ice Lake, with local SSD storage" },
+        { "series": "Das-Series v5", "skus": ["D2as_v5", "D4as_v5", "D8as_v5", "D16as_v5", "D32as_v5", "D64as_v5"], "features": "AMD EPYC Milan processors" },
+        { "series": "Dpl-Series v6", "skus": ["D2pl_v6", "D4pl_v6", "D8pl_v6", "D16pl_v6", "D32pl_v6"], "features": "Ampere Altra ARM-based processors" },
+        { "series": "Das-Series v6", "skus": ["D2as_v6", "D4as_v6", "D8as_v6", "D16as_v6", "D32as_v6"], "features": "AMD EPYC Genoa processors" },
+        { "series": "Dds-Series v6", "skus": ["D2ds_v6", "D4ds_v6", "D8ds_v6", "D16ds_v6", "D32ds_v6"], "features": "Intel Xeon Sapphire Rapids processors" },
+        { "series": "Dv4-Series", "skus": ["D2v4", "D4v4", "D8v4", "D16v4", "D32v4", "D48v4", "D64v4"], "features": "Intel Xeon Broadwell" },
+        { "series": "Das-Series v4", "skus": ["D2as_v4", "D4as_v4", "D8as_v4", "D16as_v4", "D32as_v4"], "features": "AMD EPYC Naples" },
+        { "series": "Dds-Series v4", "skus": ["D2ds_v4", "D4ds_v4", "D8ds_v4", "D16ds_v4", "D32ds_v4"], "features": "Intel Xeon Broadwell with local SSD storage" },
+        { "series": "Dv3-Series", "skus": ["D2v3", "D4v3", "D8v3", "D16v3", "D32v3", "D64v3"], "features": "Intel Xeon Haswell" },
+        { "series": "Das-Series v3", "skus": ["D2as_v3", "D4as_v3", "D8as_v3", "D16as_v3", "D32as_v3"], "features": "AMD EPYC Naples" },
+        { "series": "Dds-Series v3", "skus": ["D2ds_v3", "D4ds_v3", "D8ds_v3", "D16ds_v3", "D32ds_v3"], "features": "Intel Xeon Haswell with local SSD storage" }
+      ]
+    },
+    {
+      "category": "Compute Optimized",
+      "description": "High CPU-to-memory ratio. Suitable for medium traffic web servers, network appliances, batch processes, and application servers.",
+      "series_list": [
+        { "series": "F-Series v2", "skus": ["F2s_v2", "F4s_v2", "F8s_v2", "F16s_v2", "F32s_v2", "F48s_v2", "F64s_v2", "F72s_v2"], "features": "Intel Xeon Skylake, hyperthreaded" },
+        { "series": "Fx-Series", "skus": ["Fx4ms", "Fx8ms", "Fx12ms", "Fx24ms", "Fx36ms"], "features": "High clock speed (4.0 GHz+) for EDA workloads" }
+      ]
+    },
+    {
+      "category": "Memory Optimized",
+      "description": "High memory-to-CPU ratio. Great for relational database servers, medium-to-large caches, and in-memory analytics.",
+      "series_list": [
+        { "series": "E-Series v5", "skus": ["E2v5", "E4v5", "E8v5", "E16v5", "E32v5", "E48v5", "E64v5", "E96v5", "E104i_v5"], "features": "Large memory workloads, remote disk support only" },
+        { "series": "Eds-Series v5", "skus": ["E2ds_v5", "E4ds_v5", "E8ds_v5", "E16ds_v5", "E32ds_v5", "E64ds_v5", "E96ds_v5"], "features": "Includes fast, local NVMe temporary storage" },
+        { "series": "Ebs-Series v6", "skus": ["E2bs_v6", "E4bs_v6", "E8bs_v6", "E16bs_v6", "E32bs_v6", "E64bs_v6"], "features": "Ultra-high remote storage performance throughput" },
+        { "series": "M-Series", "skus": ["M8ms", "M16ms", "M32ls", "M32ms", "M64s", "M64ms", "M128s", "M128ms"], "features": "Extremely large scale memory up to 4TB" }
+      ]
+    },
+    {
+      "category": "Storage Optimized",
+      "description": "High disk throughput and IOPS. Ideal for Big Data, SQL, NoSQL databases, data warehousing, and large transactional databases.",
+      "series_list": [
+        { "series": "Lsv3-Series", "skus": ["L8s_v3", "L16s_v3", "L32s_v3", "L48s_v3", "L64s_v3", "L80s_v3"], "features": "Directly mapped local NVMe storage" }
+      ]
+    },
+    {
+      "category": "GPU Accelerated",
+      "description": "Specialized virtual machines targeted for heavy graphics rendering, video editing, and deep learning model training.",
+      "series_list": [
+        { "series": "NCsv3-Series", "skus": ["NC6s_v3", "NC12s_v3", "NC24s_v3", "NC24rs_v3"], "features": "NVIDIA Tesla V100 GPUs" },
+        { "series": "NDas-Series v4", "skus": ["ND96asr_v4"], "features": "NVIDIA A100 Tensor Core GPUs for massive AI scaling" },
+        { "series": "NVv4-Series", "skus": ["NV4as_v4", "NV8as_v4", "NV16as_v4", "NV32as_v4"], "features": "AMD Radeon Pro V340 MxGPU for VDI setups" }
+      ]
+    },
+    {
+      "category": "High Performance Compute",
+      "description": "Fastest and most powerful CPU flavors with optional InfiniBand interfaces for supercomputing clusters.",
+      "series_list": [
+        { "series": "HBv4-Series", "skus": ["HB120-16s_v4", "HB120-32s_v4", "HB120-64s_v4", "HB120-96s_v4", "HB120rs_v4"], "features": "AMD EPYC Genoa with 3D V-Cache" },
+        { "series": "HC-Series", "skus": ["HC44rs"], "features": "Intel Xeon Platinum optimizations for fluid dynamics" }
+      ]
+    }
+  ]
+}
