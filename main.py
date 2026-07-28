@@ -1,16 +1,17 @@
 
 import argparse
+import os
 import csv
 import logging
 from collections import defaultdict
 
-from suggestion import (
+from service.suggestion import (
     load_vm_series_reference,
     compute_sku_suggestion,
 )
 
-from cost_cal import get_azure_monthly_price
-from mail import send_vm_report_email, RECEIVER_EMAIL
+from service.cost_cal import get_azure_monthly_price
+from service.mail import send_vm_report_email, RECEIVER_EMAIL
 
 
 # ----------------------------------------------------
@@ -182,7 +183,48 @@ def process_csv(
 
     return owner_groups
 
+def export_results_to_csv(owner_groups, input_csv):
 
+    output_file = os.path.join(
+        os.path.dirname(os.path.abspath(input_csv)),
+        "vm_rightsizing_recommendations.csv"
+    )
+
+    print("Writing to:", output_file)
+
+    try:
+        with open(output_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+
+            writer.writerow([
+                "VM Name",
+                "Owner",
+                "Region",
+                "p95_cpu",
+                "p95_memory",
+                "Current SKU",
+                "Suggested SKU",
+                "Savings"
+            ])
+
+            for owner, vm_list in owner_groups.items():
+                for vm in vm_list:
+                    writer.writerow([
+                        vm["vmname"],
+                        owner,
+                        vm["region"],
+                        vm["p95_cpu"],
+                        vm["p95_memory"],
+                        vm["currentsku"],
+                        vm["suggestedsku"],
+                        vm["monthly_savings"],
+                    ])
+
+        print("CSV successfully created.")
+        logger.info("Results exported to %s", output_file)
+
+    except Exception as e:
+        logger.exception("Failed to create CSV: %s", e)
 # ----------------------------------------------------
 # Email Reports
 # ----------------------------------------------------
@@ -252,43 +294,9 @@ def main():
         "Found recommendations for %d owner(s)",
         len(owner_groups),
     )
-    logger.info("=" * 180)
-    logger.info(
-        "%-15s %-20s %-10s %-10s %-10s %-10s %-18s %-18s %-12s %-12s %-12s %-12s %-15s",
-        "VM Name",
-        "Owner",
-        "CPU(P95)",
-        "MEM(P95)",
-        "Current SKU",
-        "Suggested",
-        "Current Cost",
-        "Suggested Cost",
-        "Savings",
-        "Action",
-        "Region",
-        "Reason",
-        "Recommendation",
-    )
-    logger.info("=" * 180)
+    export_results_to_csv(owner_groups, args.csv_file)
 
-    for owner, vm_list in owner_groups.items():
-        for vm in vm_list:
-            logger.info(
-                "%-15s %-20s %-10.2f %-10.2f %-18s %-18s $%-11.2f $%-11.2f $%-11.2f %-12s %-12s %-15s %-20s",
-                vm["vmname"],
-                owner,
-                vm["p95_cpu"] if vm["p95_cpu"] else vm["avg_cpu"],
-                vm["p95_memory"] if vm["p95_memory"] else vm["avg_memory"],
-                vm["currentsku"],
-                vm["suggestedsku"],
-                vm["current_cost"],
-                vm["suggested_cost"],
-                vm["monthly_savings"],
-                vm["recommendation"],
-                vm["region"],
-                vm["reason"][:15],
-                vm["recommendation"],
-            )
+    logger.info("Report generation completed.")
 
 
     # send_reports(

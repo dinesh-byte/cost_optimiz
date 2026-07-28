@@ -1,0 +1,10 @@
+VM Name,Owner,Region,p95_cpu,p95_memory,Current SKU,Suggested SKU,Savings
+APP01,dineshkumar90885@gmail.com,East US,12.4,28.3,Standard_D8ds_v5,Standard_D4s_v5,70.03
+APP02,dineshkumar90885@gmail.com,East US,33.2,48.2,Standard_D16ds_v5,Standard_E8s_v5,105.44999999999999
+APP04,dineshkumar90885@gmail.com,Southeast Asia,18.9,35.6,Standard_F8s_v2,Standard_F4s_v2,126.53
+APP05,dineshkumar90885@gmail.com,East US,18.5,30.4,Standard_D4ds_v5,Standard_D2s_v5,35.0
+APP06,dineshkumar90885@gmail.com,West Europe,34.2,38.6,Standard_D32ds_v5,Standard_D16s_v5,338.33000000000004
+APP09,dineshkumar90885@gmail.com,Southeast Asia,27.6,31.5,Standard_F16s_v2,Standard_F8s_v2,252.99999999999997
+APP10,dineshkumar90885@gmail.com,UK South,19.8,26.4,Standard_D64ds_v5,Standard_D48s_v5,394.68999999999994
+APP07,dineshselvaa188@gmail.com,North Europe,24.1,34.8,Standard_E8ds_v5,Standard_E4s_v5,96.22
+APP11,dineshselvaa188@gmail.com,Australia East,38.7,35.2,Standard_E4ds_v5,Standard_E2s_v5,53.0
