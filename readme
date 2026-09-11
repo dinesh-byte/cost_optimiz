@@ -1,0 +1,31 @@
+Downsizing Criteria
+--------------------------------------------------------------------------------------------------------------
+Max memory usage < 40% and Max CPU usage < 40%
+Downsize both Memory and CPU
+
+Downsize Memory
+Max memory usage < 40% and Max CPU usage > 40%
+Max memory usage > 40% and Max CPU usage < 40%
+Max memory usage > 40% and Max CPU usage > 40%
+Downsize CPU
+
+No opportunity to downsize.
+
+Notes
+
+Don't change the version of the sizes which we are reducing
+D series VM will be changed to next lower D series SKU
+E series to its next lower E series VM SKU
+F series to its next lower F series VM SKU.
+D series VM will be changed to F series VM SKU with same cores
+E series will be be changed to D series will same cores
+F series doesn't have opportunity to downsize.
+D series will be changed to E series VM SKU with next lower core count
+F series will be changed to D series with lower core count
+E series doesn't have opportunity to downsize.
+
+Example
+
+Lets consider we have a general purpose VM with SKU D4as_v5 with specifications of 4 vCPU and 16GB of memory.
+Post analysis of New Relic report of last 3 months for the server, we find that the Maximum utilization is of CPU is 30% and memory is 35%.
+We will consider it to get resized to D2as_v5 with specifications of 2 vCPU and 8GB of memory, because post resize the utilization will be CPU at 60% and memory is 70% which will be well below the threshold values.
